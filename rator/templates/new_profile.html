@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{%load bootstrap4%}
+{%load static%}
+{{block.super}}
+{%block content%}
+
+
+<!-- Navigation -->
+{% if user.is_authenticated %}
+
+<!-- About -->
+<div class="masthead " id="about" style="background-color: turquoise;">
+    <div class="container text-center my-auto">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="col-lg-10 my-auto">
+                    <div class="device-container">
+
+                        <form action="{%url 'new-profile'%}" method="post" enctype="multipart/form-data">
+                            {%csrf_token%}
+
+                            {% bootstrap_form form %}
+                            <input type="submit" class="btn btn-success btn-lg" value="Post">
+                        </form>
+
+                        <div class="button">
+                            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{%endif%}
+{%endblock%}
