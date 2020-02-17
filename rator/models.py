@@ -134,3 +134,22 @@ class Project(models.Model):
         '''
         image_id=cls.objects.filter(id=imageId)
         return image_id
+
+class Rating(models.Model):
+    editor=models.ForeignKey(User,on_delete=models.CASCADE)
+    project=models.ForeignKey(Project,on_delete=models.CASCADE)
+    design=models.IntegerField()
+    usability=models.IntegerField()
+    content=models.IntegerField()
+
+
+    def __str__(self):
+        '''
+        Setting up self
+        '''
+        return self.design
+
+    @classmethod
+    def get_rating_byproject_id(cls,project_id):
+        rating=cls.objects.filter(project=project_id)
+        return rating
