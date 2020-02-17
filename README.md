@@ -37,6 +37,9 @@ This project was generated using
 5.PSQL database
 6.HTML,CSS
 
+## Known Bugs
+No bugs detected on the application
+
 ## Support and contact details
 incase you are not able to view certain application or parts of the website feel free to submit an email to mitchelaudrey@gmail.com/mitchelaudrey@icloud.com
 
