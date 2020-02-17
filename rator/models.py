@@ -67,3 +67,70 @@ class Profile(models.Model):
         '''
         image_id=cls.objects.filter(id=imageId)
         return image_id
+
+class Project(models.Model):
+    title=models.CharField(max_length=30)
+    image=models.ImageField(upload_to='images/',blank=True)
+    description=models.CharField(max_length=255)
+    link=models.URLField( max_length=128, db_index=True,unique=True,blank=True)
+    editor = models.ForeignKey(User,on_delete=models.CASCADE)
+  
+
+    def __str__(self):
+        '''
+        Setting up self
+        '''
+        return self.title
+
+    def save_project(self):
+        '''
+        Method for saving the project
+        '''
+        self.save()
+
+    def delete_project(self):
+        '''
+        Method for deleting the project
+        '''
+        self.delete()
+    
+    @classmethod
+    def get_projects(cls):
+        '''
+        Method for retrieving all images
+        '''
+        project=cls.objects.all()
+        return project
+
+    @classmethod
+    def user_projects(cls,user_id):
+        '''
+        function gets projects posted by id
+        '''
+        project_posted=cls.objects.filter(editor=user_id)
+        return project_posted    
+
+    @classmethod
+    def search_by_title(cls,tag):
+        '''
+        Method for searching for a project using the title
+        '''
+
+        search_result=cls.objects.filter(title__icontains=tag)
+        return search_result
+
+    @classmethod
+    def single_project(cls,project_id):
+        '''
+        function gets a single project posted by id
+        '''
+        project_posted=cls.objects.get(id=project_id)
+        return project_posted
+
+    @classmethod
+    def get_image_id(cls,imageId):
+        '''
+        function that gets an image id    
+        '''
+        image_id=cls.objects.filter(id=imageId)
+        return image_id
