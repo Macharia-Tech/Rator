@@ -39,3 +39,8 @@ This project was generated using
 
 ## Support and contact details
 incase you are not able to view certain application or parts of the website feel free to submit an email to mitchelaudrey@gmail.com/mitchelaudrey@icloud.com
+
+## Lincense
+MIT Copyright (c)2019 Audrey Mitchel Macharia.
+
+
