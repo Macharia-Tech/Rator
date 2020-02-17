@@ -8,3 +8,19 @@ class NewProjectForm(forms.ModelForm):
         widgets = {
             'tags': forms.CheckboxSelectMultiple(),
         }
+
+class NewProfileForm(forms.ModelForm):
+    class Meta:
+        model=Profile
+        exclude=['editor']
+        widgets={
+            'tags':forms.CheckboxSelectMultiple(),
+        }
+class NewRatingForm(forms.ModelForm):
+    class Meta:
+        model=Rating
+        exclude=['editor','project']
+        widgets={
+            
+            'tags':forms.CheckboxSelectMultiple
+        }        
