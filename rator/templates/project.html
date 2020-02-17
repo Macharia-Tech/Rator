@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{%load bootstrap4%}
+{%load static%}
+{{block.super}}
+{%block content%}
+
+{{form.media}}
+
+
+
+<!-- Navigation -->
+{% if user.is_authenticated %}
+
+
+
+<!-- About -->
+
+<body>
+
+
+<div class="masthead " id="about">
+    <div class="container text-center my-auto">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div >
+                    <img src="{{project.image.url}}" alt="image" height="80%;" width="70%;">
+                </div>
+                <h2>Posted:{{project.pub_date}} by {{project.editor.username}}</h2>
+
+                <h2>Title:{{project.title}}</h2>
+                <h2>Description:{{project.description|safe}}This project can be viewed at
+                    <a href="">{{project.link}}</a>.</h2>
+                <br>
+
+                <form style="box-shadow: 3px 3px 3px 3px black; " id="rate" action="{%url 'rate' %}" method='post'
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h2>Rate the Project</h2>
+                    <p>Design:</p>
+                    <input type="radio" name="design" value="1">1
+                    <input type="radio" name="design" value="2">2
+                    <input type="radio" name="design" value="3">3
+                    <input type="radio" name="design" value="4">4
+                    <input type="radio" name="design" value="5">5
+                    <input type="radio" name="design" value="6">6
+                    <input type="radio" name="design" value="7">7
+                    <input type="radio" name="design" value="8">8
+                    <input type="radio" name="design" value="9">9
+                    <input type="radio" name="design" value="10">10
+
+
+                    <p>Usability:</p>
+                    <input type="radio" name="usability" value="1">1
+                    <input type="radio" name="usability" value="2">2
+                    <input type="radio" name="usability" value="3">3
+                    <input type="radio" name="usability" value="4">4
+                    <input type="radio" name="usability" value="5">5
+                    <input type="radio" name="usability" value="6">6
+                    <input type="radio" name="usability" value="7">7
+                    <input type="radio" name="usability" value="8">8
+                    <input type="radio" name="usability" value="9">9
+                    <input type="radio" name="usability" value="10">10
+
+                    <p>Content:</p>
+                    <input type="radio" name="content" value="1">1
+                    <input type="radio" name="content" value="2">2
+                    <input type="radio" name="content" value="3">3
+                    <input type="radio" name="content" value="4">4
+                    <input type="radio" name="content" value="5">5
+                    <input type="radio" name="content" value="6">6
+                    <input type="radio" name="content" value="7">7
+                    <input type="radio" name="content" value="8">8
+                    <input type="radio" name="content" value="9">9
+                    <input type="radio" name="content" value="10">10
+
+                    <input type="submit" class="btn btn-outline-danger" value="Rate" href="#">
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+{%endif%}
+{%endblock%}
