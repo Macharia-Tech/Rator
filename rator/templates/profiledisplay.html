@@ -1,0 +1,85 @@
+{%extends 'base.html'%}
+{%load bootstrap4%}
+{%load static%}
+
+
+{% block content %}
+<!-- Navigation -->
+{% if user.is_authenticated %}
+
+
+
+<div class="container h-100">
+    <div class="row h-100">
+        <div class="col-lg-5 my-auto">
+            <div class="header-content mx-auto">
+                <h1 class="mb-5">
+                </h1>
+            </div>
+        </div>
+        <div class="col-lg-7 my-auto">
+            <div class="header-content ">
+
+                {%if profile%}
+
+
+                {% if user.is_authenticated %}
+                {%for profile in profile%}
+
+                <h1>{{profile.editor.username}} Profile</h1>
+                <div>
+                    <img src="{profile.image.url}" class="img-fluid" style="height:300px;width:300px;">
+                </div>
+
+                <div>
+                    <h3>{{user.username}} bio: {{profile.bio}}</h3>
+                </div>
+
+                <div>
+                    <h3>Contact : {{profile.contact}}</h3>
+                </div>
+
+
+                {%endfor%}
+
+                {%else%}
+                <div>
+                    <h1 class="text-center">{{user.username}} has no profile</h1>
+                </div>
+
+
+
+                {%endif%}
+
+                {%endif%}
+
+                {%if projects%}
+                <h1>{{projects.editor.username}} Posts</h1>
+            </div>
+            <h2>Posted:{{projects.pub_date}}</h2>
+            <h2>Title:{{projects.title}}</h2>
+            <h2>Description: {{projects.description|safe}}</h2>
+            <a href="{{projects.link}}">Project Link: {{projects.link}}</a>
+
+            <div>
+                <img src="{projects.profile_photo.url}" alt="image" height="300px;" width="300px;">
+            </div>
+            
+
+
+        </div>
+        {%endif%}
+
+    </div>
+
+</div>
+<!-- empty div -->
+<div class="col-md-4"></div>
+
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+{%endif%}
+{%endblock%}
